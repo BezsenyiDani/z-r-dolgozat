@@ -15,3 +15,8 @@ Távoli repo összekapcsolása
 -git remote add origin <url> ! @token
 -git push -u origin master
 -git push
+
+
+
+Klónozás
+-git clone url
