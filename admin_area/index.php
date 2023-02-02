@@ -47,7 +47,7 @@
             </div>
             
             <div class="button text-center">
-                <button class="my-3"><a href="" class="nav-link text-light bg-info my-1">Termék hozzáadása</a></button>
+                <button class="my-3"><a href="termekhozzaadas.php" class="nav-link text-light bg-info my-1">Termék hozzáadása</a></button>
                 <button><a href="" class="nav-link text-light bg-info my-1">Termékek megtekintése</a></button>
                 <button><a href="index.php?kategoriahozzaadas" class="nav-link text-light bg-info my-1">Kategória hozzáadása</a></button>
                 <button><a href="" class="nav-link text-light bg-info my-1">Kategóriák megtekintése</a></button>
