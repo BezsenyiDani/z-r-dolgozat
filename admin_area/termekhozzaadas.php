@@ -7,21 +7,36 @@ if(isset($_POST['termek_hozzaadas'])){
     $termek_category=$_POST['termek_category'];
     $esemeny=$_POST['esemeny'];
     $termek_ar=$_POST['termek_ar'];
+    $termek_status='true';
 
     // $termek_title=$_POST['termek_title'];
 
 
-    $termek_image1=$_POST['termek_image1']['name'];
-    $termek_image2=$_POST['termek_image2']['name'];
-    $termek_image3=$_POST['termek_image3']['name'];
+    $product_image1=$_POST['product_image1']['name'];
+    $product_image2=$_POST['product_image2']['name'];
+    $product_image3=$_POST['product_image3']['name'];
 
 
     
-    $termek_image1=$_POST['termek_image1']['tmp_name'];
-    $termek_image2=$_POST['termek_image2']['tmp_name'];
-    $termek_image3=$_POST['termek_image3']['tmp_name'];
+    $temp_image1=$_POST['product_image1']['tmp_name'];
+    $temp_image2=$_POST['product_image2']['tmp_name'];
+    $temp_image3=$_POST['product_image3']['tmp_name'];
 
+    if($termek_title=='' or $termek_leiras=='' or $termek_kulcsszo=='' or $termek_category=='' or $esemeny=='' or $termek_ar=='' or $product_image1=='' or $product_image2=='' or $product_image3=='' ){
+        echo "<script>alert('Kérem töltsön ki minden mezőt!')</script>";
+        exit();
+    }else{
+        move_uploaded_file($temp_image1,"./termek_images/$product_image1");
+        move_uploaded_file($temp_image2,"./termek_images/$product_image2");
+        move_uploaded_file($temp_image3,"./termek_images/$product_image3");
 
+        $termek_hozzaadas="insert into `termekek` (termek_title,termek_description,termek_keywords,category_id,event_id,product_image1,product_image2,product_image3,termek_ar,datum,status)
+        values ('$termek_title','$termek_leiras','$termek_kulcsszo','$termek_category','$esemeny','$product_image1','$product_image2','$product_image3','$termek_ar',NOW(),'$termek_status')";
+        $result_query=mysqli_query($con,$termek_hozzaadas);
+        if($result_query){
+            echo "<script>alert('A termék sikeresen hozzáadva!')</script>";
+        }
+    }
 
    
 
@@ -119,20 +134,20 @@ if(isset($_POST['termek_hozzaadas'])){
             <br>
 
             <div class="form-outline mb-4 w-50 m-auto">
-                <label for="termek_image1" class="form-label">Termék kép 1 (Főkép)</label>
-                <input type="file" name="termek_image1" id="termek_image1" class="input-group" required="required">
+                <label for="product_image1" class="form-label">Termék kép 1 (Főkép)</label>
+                <input type="file" name="product_image1" id="product_image1" class="input-group" required="required">
             </div>
             <br>
 
             <div class="form-outline mb-4 w-50 m-auto">
-                <label for="termek_image2" class="form-label">Termék kép 2</label>
-                <input type="file" name="termek_image2" id="termek_image2" class="input-group" required="required">
+                <label for="product_image2" class="form-label">Termék kép 2</label>
+                <input type="file" name="product_image2" id="product_image2" class="input-group" required="required">
             </div>
             <br>
 
             <div class="form-outline mb-4 w-50 m-auto">
-                <label for="termek_image3" class="form-label">Termék kép 3</label>
-                <input type="file" name="termek_image3" id="termek_image3" class="input-group" required="required">
+                <label for="product_image3" class="form-label">Termék kép 3</label>
+                <input type="file" name="product_image3" id="product_image3" class="input-group" required="required">
             </div>
             <br>
             <div class="form-outline mb-4 w-50 m-auto">
