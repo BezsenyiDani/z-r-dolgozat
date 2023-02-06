@@ -12,15 +12,14 @@ if(isset($_POST['termek_hozzaadas'])){
     // $termek_title=$_POST['termek_title'];
 
 
-    $product_image1=$_POST['product_image1']['name'];
-    $product_image2=$_POST['product_image2']['name'];
-    $product_image3=$_POST['product_image3']['name'];
-
+    $product_image1=$_FILES['product_image1']["name"];
+    $product_image2=$_FILES['product_image2']["name"];
+    $product_image3=$_FILES['product_image3']["name"];
 
     
-    $temp_image1=$_POST['product_image1']['tmp_name'];
-    $temp_image2=$_POST['product_image2']['tmp_name'];
-    $temp_image3=$_POST['product_image3']['tmp_name'];
+    $temp_image1=$_FILES['product_image1']['tmp_name'];
+    $temp_image2=$_FILES['product_image2']['tmp_name'];
+    $temp_image3=$_FILES['product_image3']['tmp_name'];
 
     if($termek_title=='' or $termek_leiras=='' or $termek_kulcsszo=='' or $termek_category=='' or $esemeny=='' or $termek_ar=='' or $product_image1=='' or $product_image2=='' or $product_image3=='' ){
         echo "<script>alert('Kérem töltsön ki minden mezőt!')</script>";
@@ -58,7 +57,7 @@ if(isset($_POST['termek_hozzaadas'])){
 <body class="bg-light">
     <div class="container">
         <h1 class="text-center mt-3">Termék hozzáadás</h1>
-        <form action="" method="post" enctype="multipal/form-data">
+        <form action="" method="post" enctype="multipart/form-data">
 
             <div class="form-outline mb-4 w-50 m-auto">
                 <label for="termek_title" class="form-label">Termék neve</label>
@@ -160,7 +159,11 @@ if(isset($_POST['termek_hozzaadas'])){
             <div class="form-outline mb-4 w-50 m-auto">
               <input type="submit" name="termek_hozzaadas" class="btn btn-info mb-3 px-3" value="Termék hozzáadás">
             </div>
-            <br>
+            
+            <!--
+            <div class="form-outline mb-4 w-50 m-auto">
+              <input href="http://localhost/BD/z%C3%A1r%C3%B3/admin_area/" type="button" name="adminoldal" class="btn btn-info mb-3 px-3" value="Vissza az admin oldalra">
+            </div>-->
 
         </form>
     </div>

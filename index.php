@@ -1,5 +1,7 @@
 <?php
 include('include/connect.php');
+include('function/common_function.php');
+
 ?>
 
 <!DOCTYPE html>
@@ -70,78 +72,26 @@ include('include/connect.php');
     <div class="col md-10">
     <!-- Termékek-->
         <div class="row">
-            <div class="col-md-4 mb-2">
-            <div class="card">
+        <?php
+        getproducts();
+         
+         ?>
+           <!-- <div class="col-md-4 mb-2">
+              <div class="card">
                  <img src="./images/banan.jpg" class="card-img-top" alt="...">
-                 <div class="card-body">
+                  <div class="card-body">
                  <h5 class="card-title">Card title</h5>
                  <p class="card-text">Leírás</p>
                  <a href="#" class="btn btn-primary">Hozzáadás a kosárhoz</a>
                  <a href="#" class="btn btn-secondary">Adatok</a>
-             </div>
-             </div>  
-             </div>
-            
-            <div class="col-md-4 mb-2">
-            <div class="card">
-                 <img src="./images/banan.jpg" class="card-img-top" alt="...">
-                 <div class="card-body">
-                 <h5 class="card-title">Card title</h5>
-                 <p class="card-text">Leírás</p>
-                 <a href="#" class="btn btn-primary">Hozzáadás a kosárhoz</a>
-                 <a href="#" class="btn btn-secondary">Adatok</a>
-             </div>
-            </div>
-            </div>
-            
-            <div class="col-md-4 mb-2">
-            <div class="card">
-                 <img src="./images/banan.jpg" class="card-img-top" alt="...">
-                 <div class="card-body">
-                 <h5 class="card-title">Card title</h5>
-                 <p class="card-text">Leírás</p>
-                 <a href="#" class="btn btn-primary">Hozzáadás a kosárhoz</a>
-                 <a href="#" class="btn btn-secondary">Adatok</a>
-            </div>
-            </div>
-            </div>
-            <div class="col-md-4 mb-2">
-            <div class="card">
-                 <img src="./images/banan.jpg" class="card-img-top" alt="...">
-                 <div class="card-body">
-                 <h5 class="card-title">Card title</h5>
-                 <p class="card-text">Leírás</p>
-                 <a href="#" class="btn btn-primary">Hozzáadás a kosárhoz</a>
-                 <a href="#" class="btn btn-secondary">Adatok</a>
-            </div>
-            </div>
-            </div>
+                </div>
+              </div>  
+           </div>
+        -->
 
-            <div class="col-md-4 mb-2">
-            <div class="card">
-                 <img src="./images/banan.jpg" class="card-img-top" alt="...">
-                 <div class="card-body">
-                 <h5 class="card-title">Card title</h5>
-                 <p class="card-text">Leírás</p>
-                 <a href="#" class="btn btn-primary">Hozzáadás a kosárhoz</a>
-                 <a href="#" class="btn btn-secondary">Adatok</a>
-            </div>
-            </div>
-            </div>
-            <div class="col-md-4 mb-2">
-            <div class="card">
-                 <img src="./images/banan.jpg" class="card-img-top" alt="...">
-                 <div class="card-body">
-                 <h5 class="card-title">Card title</h5>
-                 <p class="card-text">Leírás</p>
-                 <a href="#" class="btn btn-primary">Hozzáadás a kosárhoz</a>
-                 <a href="#" class="btn btn-secondary">Adatok</a>
-            </div>
-            </div>
-            </div>
-
-
+<!--row end-->
      </div>
+     <!--col end-->
     </div>
     <div class="col-md-2 bg-secondary p-0">
         <ul class="navbar-nav me-auto text-center">
@@ -150,16 +100,7 @@ include('include/connect.php');
             </li>
         
             <?php
-            $select_category="Select * from `kategoria`";
-            $result_category=mysqli_query($con,$select_category);
-           // echo $row_data['category_title'];
-           while($row_data=mysqli_fetch_assoc($result_category)){
-            $category_title=$row_data['category_title'];
-            $category_id=$row_data['category_id'];
-            echo "  <li class='nav-item'>
-            <a href='index.php?category=$category_id' class='nav-link text-light'>$category_title</a>
-        </li>";
-           }
+           getcategories();
             ?>
        
         </ul>
@@ -171,26 +112,17 @@ include('include/connect.php');
             </li>
         
             <?php
-            $select_event="Select * from `esemenyek`";
-            $result_event=mysqli_query($con,$select_event);
-           // echo $row_data['category_title'];
-           while($row_data=mysqli_fetch_assoc($result_event)){
-            $event_title=$row_data['event_title'];
-            $event_id=$row_data['event_id'];
-            echo "  <li class='nav-item'>
-            <a href='index.php?event=$event_id' class='nav-link text-light'>$event_title</a>
-        </li>";
-           }
+           getesemenyek();
             ?>
         </ul>
 
-        <ul class="navbar-nav me-auto text-center">
+        <!--<ul class="navbar-nav me-auto text-center">
         <li class="nav-item bg-info">
                 <a href="" class="nav-link"><h4>Alapanyagok</h4></a>
             </li>
         
             <?php
-            $select_alapanyag="Select * from `alapanyag`";
+           /* $select_alapanyag="Select * from `alapanyag`";
             $result_alapanyag=mysqli_query($con,$select_alapanyag);
            // echo $row_data['category_title'];
            while($row_data=mysqli_fetch_assoc($result_alapanyag)){
@@ -199,9 +131,11 @@ include('include/connect.php');
             echo "  <li class='nav-item'>
             <a href='index.php?alapanyag=$alapanyag_id' class='nav-link text-light'>$alapanyag_title</a>
         </li>";
-           }
+           }*/
             ?>
-        </ul>
+
+            
+        </ul>-->
     </div>
     
 </div>
