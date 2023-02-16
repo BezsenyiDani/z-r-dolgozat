@@ -73,7 +73,8 @@ include('function/common_function.php');
     <!-- Termékek-->
         <div class="row">
         <?php
-        getproducts();
+        //getproducts();
+        getuniquecategories()
          
          ?>
            <!-- <div class="col-md-4 mb-2">

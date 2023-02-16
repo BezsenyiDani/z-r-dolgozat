@@ -4,6 +4,11 @@ include('./include/connect.php');
 function getproducts(){
     global $con;
 
+    if(!isset($_GET['kategoria'])){
+        if(!isset($_GET['esemeny'])){
+
+       
+
     $select_query="Select * from `termekek`";
     $result_query=mysqli_query($con,$select_query);
    // $row=mysqli_fetch_assoc($result_query);
@@ -30,6 +35,51 @@ function getproducts(){
   </div>";
     }
 }
+}
+}
+
+function getuniquecategories(){
+    global $con;
+
+    if(isset($_GET['category'])){
+        $category_id=$_GET['category'];
+
+       
+
+    $select_query="Select * from `termekek` where category_id='$category_id'";
+    $result_query=mysqli_query($con,$select_query);
+    $num_of_rows=mysqli_num_rows($result_query);
+    if($num_of_rows==0){
+        echo "<h2 class='text-center'>Nincs termék ehhez a kategóriához</h2>";
+    }
+   // $row=mysqli_fetch_assoc($result_query);
+   // echo $row['termek_title'];
+    while($row=mysqli_fetch_assoc($result_query)){
+     $termek_id=$row['termek_id'];
+     $termek_title=$row['termek_title'];
+     $termek_description=$row['termek_description'];
+     $product_image1=$row['product_image1'];
+     $termek_ar=$row['termek_ar'];
+     $category_id=$row['category_id'];
+     $event_id=$row['event_id'];
+
+     echo "<div class='col-md-4 mb-2'>
+     <div class='card'>
+        <img src='./admin_area/termek_images/$product_image1' class='card-img-top' alt='$termek_title'>
+         <div class='card-body'>
+        <h5 class='card-title'>$termek_title</h5>
+        <p class='card-text'>$termek_description</p>
+        <a href='#' class='btn btn-primary'>Hozzáadás a kosárhoz</a>
+        <a href='#' class='btn btn-secondary'>Adatok</a>
+       </div>
+     </div>  
+  </div>";
+    }
+}
+}
+
+
+
 
 
 function getcategories(){
